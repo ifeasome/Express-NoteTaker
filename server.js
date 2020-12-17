@@ -40,4 +40,4 @@ app.use(express.json());
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "notes.html"));
 }); 
-// Hey Sam (is my syntax right to use path.join or fs.join or fs.path.join). I am not too sure what I am even trying to do...
+
