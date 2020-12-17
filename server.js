@@ -26,18 +26,26 @@ let path = require("path");
 // =======================================
 
 let app = express();
-let PORT = 3001;
+let PORT = process.env.PORT || 3001;
 
 // Sets up the Express app to handle data parsing 
-app.use(express.urlencoded({ extended: true }));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
 
-// Routes 
+
+
+// Router
 // ==================================
 
-// Basic route that send that gets the saved note from the user 
-app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "notes.html"));
-}); 
+require("./routes/api_routes")(app);
+require("./routes/html_routes")(app);
+
+// Listener 
+// =================================
+
+app.listen(PORT, function() {
+    console.log("I am listening on PORT: " + PORT);
+})
+
 
