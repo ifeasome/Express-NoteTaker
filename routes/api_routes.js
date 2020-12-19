@@ -32,7 +32,7 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
 app.post("/api/notes", function (req, res) {
-    let newNote = fs.readFile("./db/db.json ", "utf8")
+    let newNote = fs.readFile("./db/db.json", "utf8")
     newNote = JSON.parse(newNote);
     newNote.push(req.body);
     console.log(req.body);
@@ -42,14 +42,14 @@ app.post("/api/notes", function (req, res) {
 }
 
     newNote = JSON.stringify(newNote);
-    fs.writeFile("./db/db.json ", newNote);
+    fs.writeFile("./db/db.json", newNote);
     res.json(JSON.parse(newNote));
   });
 
   // ---------------------------------------------------------------------------
   // API Delete notes
   app.delete("/api/notes/:id", function(req, res) {
-    let deleteNote = fs.readFile("./db/db.json ", "utf8")
+    let deleteNote = fs.readFile("./db/db.json", "utf8")
     // Empty out the arrays of data
     fs.readFile("./db/db.json", (err, data) => {
       if (err) throw err;
@@ -62,9 +62,10 @@ app.post("/api/notes", function (req, res) {
       }
 
       
-      fs.writeFile("./db/db.json ", JSON.stringify(deleteNote), (err) => {
+      fs.writeFile("./db/db.json", JSON.stringify(deleteNote), (err) => {
         if (err) throw err;
         res.send(deleteNote);
+        console.log(deleteNote);
       });
      
     }
