@@ -18,7 +18,6 @@
 
 // Dependencies 
 // ======================================
-let fs = require("fs");
 let express = require("express");
 let path = require("path");
 
@@ -31,8 +30,6 @@ let PORT = process.env.PORT || 3001;
 // Sets up the Express app to handle data parsing 
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.json());
-
-
 
 
 // Router
