@@ -3,8 +3,9 @@
 // ===============================================================================
 
 let fs = require("fs");
-// const { v4: uuidv4 } = require('uuid');
-// const { json } = require("express");
+const { v4: uuidv4 } = require('uuid');
+uuidv4();
+
 
 // ===============================================================================
 // ROUTING
@@ -18,7 +19,7 @@ module.exports = function (app) {
     // newNote.id = uuidv4();
     fs.readFile("./db/db.json", (err, data) => {
       if (err) throw err;
-      // console.log(data);
+    
       res.json(JSON.parse(data));
     });
   });
@@ -28,13 +29,14 @@ module.exports = function (app) {
 
   app.post("/api/notes", function (req, res) {
     let newNote = fs.readFileSync("./db/db.json", "utf8");
+
     newNote = JSON.parse(newNote);
     newNote.push(req.body);
 
 
 
     for (let i = 0; i < newNote.length; i++) {
-      newNote[i].id = i + 1;
+      newNote[i].id = uuidv4();
     }
     newNote = JSON.stringify(newNote);
     fs.writeFileSync("./db/db.json", newNote);
@@ -51,7 +53,8 @@ module.exports = function (app) {
 
       let deleteNote = JSON.parse(data);
 
-  
+      console.log(deleteNote);
+      console.log(req.params.id);
 
       for (let i = 0; i < deleteNote.length; i++) {
         if (deleteNote[i].id == req.params.id) {
