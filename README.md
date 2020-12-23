@@ -45,7 +45,7 @@ Install program as detailed here: [Installation](#Installation).
 Credit to: </br>
  [Demetri Dillard](https://github.com/Meechlouch) for walking me through tough areas in the application. </br>
  [Kristina Hamilton](https://github.com/Kay0s) for helpful insights during study group. </br>
- [Alice Pilad](https://github.com/adpir) for help debugging my application.
+ [Alice Piar](https://github.com/adpir) for help debugging my application.
 
 
 ## Contributors 
